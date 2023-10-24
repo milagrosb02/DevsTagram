@@ -34,7 +34,7 @@ class RegisterController extends Controller
 
             'name' => ['required','max:35','regex:/^[a-zA-Z\s]+$/'],
 
-            'username' => ['required', 'unique:users', 'min:3', 'max:15', 'regex:/^[a-zA-Z\s]+$/'],
+            'username' => ['required', 'unique:users', 'min:3', 'max:15'],
 
             'email' => ['required', 'unique:users', 'email', 'max:30'],
 
@@ -78,7 +78,7 @@ class RegisterController extends Controller
 
 
         // Redirecciono
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username);
 
 
     }

@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
 
         // si los datos fueron correctos
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username );
 
     }
 
