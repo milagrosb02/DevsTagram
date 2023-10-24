@@ -24,13 +24,54 @@
 
                 </h1>
 
-                <nav class="flex gap-2 items-center">
 
-                    <a class="font-bold uppercase text-purple-800 text-sm" href="#">Login</a>
+                {{-- Comprueba si un usuario esta autenticado o no --}}
+                @auth
+                    <nav class="flex gap-2 items-center">
 
-                    <a class="font-bold uppercase text-purple-800 text-sm" href="{{ route('register') }}">Crear cuenta</a>
+                        <a class="font-bold text-purple-800 text-sm" href="#">
+                            
+                            Hola 
+                            <span class="font-normal"> 
+                                
+                                {{ auth()->user()->username }}
 
-                </nav>
+                            </span>
+                        
+                        </a>
+
+                        {{-- formulario para cerrar sesion --}}
+
+                        <form method="POST" action="{{ route('logout')}}">
+
+                            @csrf
+                            <button type="submit" class="font-bold uppercase text-purple-800 text-sm">
+                            
+                                Cerrar Sesión
+                            
+                            </button>
+    
+                        
+
+                        </form>
+
+                    </nav>
+                        
+                @endauth
+
+
+                @guest
+                    <nav class="flex gap-2 items-center">
+
+                        <a class="font-bold uppercase text-purple-800 text-sm" href="#">Login</a>
+
+                        <a class="font-bold uppercase text-purple-800 text-sm" href="{{ route('register') }}">Crear cuenta</a>
+
+                    </nav>    
+                @endguest
+
+
+                
 
             </div>
             
