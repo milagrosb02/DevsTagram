@@ -26,7 +26,7 @@ class LoginController extends Controller
 
         // comprueba si las credenciales son correctas
         // esto retorna true o false
-        if(!auth()->attempt($request->only('email','password')))
+        if(!auth()->attempt($request->only('email','password'), $request->remember))
         {   
             // este mensaje se muestra en la vista y es creado con with
             // back() hace que vuelva a la pagina anterior

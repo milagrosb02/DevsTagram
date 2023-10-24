@@ -90,6 +90,15 @@
                 </div>
 
 
+                {{-- Boton de RECUERDAME --}}
+                <div class="mb-5">
+
+                    <input type="checkbox" name="remember"> <label class="text-gray-700 text-sm">Recuerdame</label>
+
+                </div>    
+
+
+
                 <input
 
                     type="submit"
