@@ -9,7 +9,7 @@ const dropzone = new Dropzone('#dropzone', {
 
     dictDefaultMessage: 'Sube aquí tu imagen', 
 
-    acceptedFiles: ".png, .jpg, jpeg, .gif",
+    acceptedFiles: ".png, .jpg, .jpeg, .gif",
 
     // esto permite al usuario eliminar la imagen
     addRemoveLinks: true,
