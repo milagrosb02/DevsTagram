@@ -10,7 +10,11 @@
     <div class="md:flex md:items-center">
 
         <div class="md:w-1/2 px-10">
-            Imagen aquí
+           {{-- llamo a dropzone  --}}
+           <form id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+
+
+           </form>
         </div>
 
 

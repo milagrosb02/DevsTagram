@@ -47,7 +47,8 @@
                         </a>   
 
 
-                        <a class="font-bold text-purple-800 text-sm" href="#">
+                        {{-- cuando hace click en su username, le lleva a su propio muro --}}
+                        <a class="font-bold text-purple-800 text-sm" href="{{ route('posts.index', auth()->user()->username ) }}">
                             
                             Hola 
                             <span class="font-normal"> 
