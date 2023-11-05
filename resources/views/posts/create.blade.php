@@ -19,8 +19,11 @@
            {{-- llamo a dropzone  --}}
            {{-- uso la ruta a donde van a ir las imagenes --}}
            {{-- enctype="multipart/form-data" para subir imagenes--}}
-           <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
+           <form action="{{ route('imagenes.store') }}" method="POST" enctype="multipart/form-data" 
+           
+            id="dropzone" class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center">
 
+            @csrf
 
            </form>
         </div>
