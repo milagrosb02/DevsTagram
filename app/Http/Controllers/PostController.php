@@ -30,10 +30,26 @@ class PostController extends Controller
     }
 
 
+    // esta funcion permite visualizar el formulario, pero no es el que crea en si la publicacion
     public function create()
     {
         return view('posts.create');
     }
 
+
+
+    public function store(Request $request)
+    {
+       // validando el formulario de publicaciones
+       $this->validate($request, 
+       [
+        'titulo' => ['required','max:30'],
+
+        'descripcion' => ['required'],
+
+        'imagen' => ['required']
+
+       ]);
+    }
 
 }

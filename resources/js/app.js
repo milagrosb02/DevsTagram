@@ -24,21 +24,23 @@ const dropzone = new Dropzone('#dropzone', {
 
 // evento de dropzone para ver como se esta mandando el archivo
 // file-> archivo, xhr-> peticion, 
-dropzone.on('sending', function(file, xhr, formData) {
+/*dropzone.on('sending', function(file, xhr, formData) {
     console.log(formData);
-})
+})*/
 
 
 // evento de dropzone en caso de que la imagen se suba correctamente
 dropzone.on('success', function(file, response){
-    console.log(response);
+   
+    // Asigno el valor de la imagen al input hidden de subir la foto
+    document.querySelector('[name="imagen"]').value = response.imagen;
 })
 
 
 // evento de dropzone en caso de que la imagen NO se suba correctamente
-dropzone.on('error', function(file, message){
+/*dropzone.on('error', function(file, message){
     console.log(message);
-})
+})*/
 
 
 

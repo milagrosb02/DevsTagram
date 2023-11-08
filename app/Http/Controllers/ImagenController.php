@@ -32,7 +32,7 @@ class ImagenController extends Controller
         // Guardo imagen en el servidor
         $imagenServidor->save($imagenPath);
 
-
+        // Este objeto es el que se ve al subir una foto y verla desde la consola del navegador
         return response()->json(['imagen' => $nombreImagen]);
 
     }

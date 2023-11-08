@@ -30,7 +30,7 @@
 
 
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('posts.store') }}" method="POST">
 
                 {{-- este CSRF por lo que entendi, evita que expire la pagina o que sufra ataques --}}
                 @csrf
@@ -88,6 +88,25 @@
                     @enderror
 
                 </div> 
+
+
+
+                {{-- ACA SE VA A GUARDAR LA IMAGEN --}}
+                <div class="mb-5">
+
+                    {{-- esto viene de la base de la migracion, es decir, el name del input --}}
+                    <input
+
+                        name = "imagen"
+                        type="hidden"
+                    /> 
+
+                    {{-- esto imprime los errores --}}
+                    @error('imagen')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    @enderror
+                </div>   
+
 
 
                 {{-- boton para enviar --}}
