@@ -99,6 +99,7 @@
 
                         name = "imagen"
                         type="hidden"
+                        value=" {{ old('imagen') }}" {{-- guarda la imagen que se subio --}}
                     /> 
 
                     {{-- esto imprime los errores --}}

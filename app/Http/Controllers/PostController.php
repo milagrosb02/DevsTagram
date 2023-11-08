@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -50,6 +51,26 @@ class PostController extends Controller
         'imagen' => ['required']
 
        ]);
+
+
+       // Insert en la bd
+       Post::create([
+
+        'titulo' => $request->titulo,
+
+        'descripcion' => $request->descripcion,
+
+        'imagen' => $request->imagen,
+
+        // Guardo el usuario que esta autenticado
+        'user_id' => auth()->user()->id
+
+       ]);
+
+
+       // Una vez subida la imagen, redigire al muro del usuario autenticado
+       return redirect()->route('posts.index', auth()->user()->username);
+
     }
 
 }
