@@ -53,7 +53,7 @@ class PostController extends Controller
        ]);
 
 
-       // Insert en la bd
+       // Insert en la bd (crea registros)
        Post::create([
 
         'titulo' => $request->titulo,
@@ -66,6 +66,20 @@ class PostController extends Controller
         'user_id' => auth()->user()->id
 
        ]);
+
+
+       /* Otra manera de crear registros
+
+        $post = new Post;
+
+        $post->titulo = $request->titulo;
+        $post->descripcion = $request->descripcion;
+        $post->imagen = $request->imagen;
+        $post->user_id = auth()->user()->id
+       
+       
+       */
+
 
 
        // Una vez subida la imagen, redigire al muro del usuario autenticado
