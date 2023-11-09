@@ -87,7 +87,15 @@
 
 
                 </div>  
-            
+                
+                {{-- PAGINACION --}}
+                {{-- hago uso de $posts porque es la variable que trae los posts desde el controlador --}}
+                <div>
+
+                    {{ $posts->links()}}
+
+                </div>   
+
         @else
 
         <p class="text-gray-600 uppercase text-sm text-center font-bold">No posees publicaciones</p>
