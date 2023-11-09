@@ -77,7 +77,8 @@
                         <div>
 
                             {{-- enlace para ver las publicaciones (hacer clic en la imagen )--}}
-                            <a>
+                            {{-- llamo a la ruta donde se muestra una publicacion --}}
+                            <a href="{{ route('posts.show', $post) }}">
                                 <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post" {{$post->titulo}}>
                             </a>
 
@@ -90,7 +91,7 @@
                 
                 {{-- PAGINACION --}}
                 {{-- hago uso de $posts porque es la variable que trae los posts desde el controlador --}}
-                <div>
+                <div class="my-10">
 
                     {{ $posts->links()}}
 
