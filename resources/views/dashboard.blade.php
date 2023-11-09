@@ -52,6 +52,37 @@
         </div>   
 
 
-    </div>    
+    </div>  
+    
+    
+    {{-- Seccion de mostrar las publicaciones --}}
+    {{-- El backend de esta parte esta en post controller --}}
+
+
+    <section class="container mx-auto mt-10">
+
+        <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            {{-- Itero el array de publicaciones --}}
+            @foreach ($posts as $post)
+            
+                <div>
+
+                    {{-- enlace para ver las publicaciones (hacer clic en la imagen )--}}
+                    <a>
+                        <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post" {{$post->titulo}}>
+                    </a>
+
+                </div>   
+
+            @endforeach
+
+
+        </div>     
+        
+
+    </section>   
 
 @endsection

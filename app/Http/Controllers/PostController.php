@@ -19,11 +19,21 @@ class PostController extends Controller
 
     public function index(User $user)
     {
+
+        // Filtro las publicaciones por el id del usuario
+        // Con get se obtienen los resultados
+        $posts = Post::where('user_id', $user->id)->get();
+
+
         // retorna la vista del muro
         return view('dashboard', [
 
+            // aca le paso a lo que voy a acceder de la vista (user y post)
             // le paso informacion del usuario (en la url aparece el username)
-            'user' => $user
+            'user' => $user,
+
+            // le paso los post
+            'posts' => $posts
 
         ]);
 
@@ -77,7 +87,24 @@ class PostController extends Controller
         $post->imagen = $request->imagen;
         $post->user_id = auth()->user()->id
        
-       
+       */
+
+
+
+       /* Otra manera de generar registros con la relacion
+
+        $request->user()->posts()->create([
+
+            'titulo' => $request->titulo,
+
+            'descripcion' => $request->descripcion,
+
+            'imagen' => $request->imagen,
+
+            'user_id' => auth()->user()->id
+        ]);
+
+
        */
 
 
