@@ -12,7 +12,7 @@
 
 @section('contenido')
 
-    <div class="container mx-auto flex">
+    <div class="container mx-auto md:flex">
 
         <div class="md:w-1/2">
 
@@ -41,9 +41,74 @@
         </div>   
 
 
-        <div class="md:w-1/2">
+        {{-- esta es la seccion de los comentarios de la foto --}}
+        <div class="md:w-1/2 p-5">
 
-            2
+            <div class="shadow bg-white p-5 mb-5">
+
+                {{-- Con esto protejo que no se pueda comentar si un usuario no esta autenticado--}}
+                @auth
+                <p class="text-xl font-bold text-center mb-4">Agrega un nuevo comentario</p>
+
+
+                {{-- mensaje de que si se envio el comentario o no--}}
+                @if(session('mensaje'))
+
+                    <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">
+
+                        {{session('mensaje')}}
+                     
+                    </div>   
+
+                @endif
+
+                {{-- formulario para enviar comentarios --}}
+                <form action="{{ route('comentarios.store', ['post' => $post, 'user' => $user ]) }}" method="POST">
+
+                    @csrf
+
+                    <div class="mb-5">
+
+                        <label for="comentario" class="mb-2 block uppercase text-gray-700 font-bold">Comentario</label>
+    
+                        <textarea
+                        
+                            id="comentario"
+                            name="comentario"
+                            placeholder="Comentario de la publicación"
+                            class="border p-3 w-full rounded-lg
+                            @error('comentario')
+                            border-red-500
+                            @enderror"
+    
+    
+                            value=""
+    
+                        ></textarea>
+    
+                        {{-- esto imprime los errores --}}
+                        @error('comentario')
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                        @enderror
+    
+                    </div> 
+
+
+                     {{-- boton para enviar el comentario --}}
+                        <input
+
+                        type="submit"
+                        value="Comentar"
+                        class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg"
+
+                    />
+
+                </form>    
+                @endauth 
+                
+
+
+            </div>    
 
         </div>   
 

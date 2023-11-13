@@ -12,7 +12,7 @@ class PostController extends Controller
     // Protego el muro con middleware
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['show', 'index']); // Este controlador va a estar protegido excepto estos metodos (es decir estos seran visibles)
     }
 
 
@@ -119,7 +119,9 @@ class PostController extends Controller
     {
         return view('posts.show', [
 
-            'post' => $post
+            'post' => $post,
+
+            'user' => $user
 
         ]);
     }
