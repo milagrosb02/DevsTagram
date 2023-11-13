@@ -78,7 +78,7 @@
 
                             {{-- enlace para ver las publicaciones (hacer clic en la imagen )--}}
                             {{-- llamo a la ruta donde se muestra una publicacion --}}
-                            <a href="{{ route('posts.show', $post) }}">
+                            <a href="{{ route('posts.show', ['post' => $post, 'user' => $user ]) }}">
                                 <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post" {{$post->titulo}}>
                             </a>
 
