@@ -10,4 +10,12 @@ class Comentario extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'post_id', 'comentario'];
+
+
+    // Hago relacion con user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

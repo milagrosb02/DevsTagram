@@ -104,7 +104,43 @@
                     />
 
                 </form>    
-                @endauth 
+                @endauth
+                
+                
+                {{-- Mostrar los comentarios --}}
+                <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
+
+                    {{-- este if es para saber si hay comentarios --}}
+                    @if ($post->comentarios->count())
+                      
+                    {{-- itero sobre los comentarios para mostrarlo --}}
+                    @foreach ($post->comentarios as $comentario )
+
+                        <div class="p-5 border-gray-300 border-b">
+
+                            {{-- muestro quien escribio el comentario--}}
+                            <a href="{{ route('posts.index', $comentario->user)}}" class="font-bold" >
+                                {{ $comentario->user->username}}
+                            </a>
+                            <p>{{ $comentario->comentario}}</p>
+                            <p class="text-sm text-gray-500">{{ $comentario->created_at->diffForHumans()}}</p>
+
+                        </div>   
+
+                        
+                    @endforeach
+
+
+                    {{-- si no hay comentarios se muestra este texto--}}
+                    @else
+
+                        <p class="p-10 text-center">No hay comentarios aún</p>
+
+                    @endif
+
+
+
+                </div>   
                 
 
 
