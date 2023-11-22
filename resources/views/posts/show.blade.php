@@ -35,8 +35,39 @@
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="mt-5"> {{$post->descripcion}} </p>
 
-            </div>   
+            </div>  
+            
+            
+            {{-- mostrar el input de borrar publicacion --}}
+            @auth
+                {{-- detecta si la persona que quiere eliminar la publicacion es la misma que esta autenticada, si es asi
+                    se muestra el formulario --}}
+                @if ($post->user_id === auth()->user()->id)
+                    
+                    <form method= POST action="{{ route('posts.destroy', $post)}}">
 
+                        {{-- metodo spoofing (el navegador solo soporta post y get)--}}
+                        @method('DELETE')
+
+                        @csrf
+
+                        <input 
+                            
+                            type="submit"
+                        
+                            value="Eliminar foto"
+
+                            class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer"
+
+                        />
+
+                    </form>   
+
+
+                @endif
+                
+            @endauth
+            
             
         </div>   
 

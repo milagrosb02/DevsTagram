@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Post;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -125,5 +126,34 @@ class PostController extends Controller
 
         ]);
     }
+
+
+    // identifica que post voy a eliminar
+    public function destroy(User $user , Post $post)
+    {
+        // compruebo si el usuario que quiere eliminar la publicacion es el que creo la publicacion (esto esta em PostPolicy)
+        
+        $this->authorize('delete', $post);
+
+        // eliminar el post
+        $post->delete();
+
+
+        // eliminar la imagen
+        $imagen_path = public_path('uploads/' . $post->imagen);
+
+
+        // verifica si el archivo existe para eliminarlo
+        if (File::exists($imagen_path)) {
+            
+            unlink($imagen_path);
+
+        }    
+        
+
+        return redirect()->route('posts.index', auth()->user()->username);
+
+    }
+
 
 }

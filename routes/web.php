@@ -39,7 +39,7 @@ Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->na
 
 
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store'); // este {post} es el id del post
-
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
