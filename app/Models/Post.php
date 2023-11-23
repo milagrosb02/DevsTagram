@@ -26,4 +26,10 @@ class Post extends Model
         return $this->hasMany(Comentario::class);
     }
 
+
+    // un post va a tener muchos likes
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
