@@ -17,7 +17,7 @@
         <div class="md:w-1/2 bg-white shadow p-6">
 
 
-            <form method= "POST" action="{{ route("perfil.store")}}" enctype="multipart/form-data"   class="mt-10 md:mt-8">
+            <form method="POST" action="{{ route('perfil.store')}}" enctype="multipart/form-data"   class="mt-10 md:mt-8">
 
                 @csrf
 

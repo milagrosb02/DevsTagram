@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,11 @@ class PerfilController extends Controller
 
         $this->validate($request, [
 
-            'username' => ['required', 'unique:users', 'min:3', 'max:15'],
+            'username' => ['required', 'unique:users,' .auth()->user()->id, 'min:3', 'max:15', 'not_in:twitter,editar-perfil'],
 
         ]);
+
+        
     }
 
 }

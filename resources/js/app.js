@@ -1,9 +1,10 @@
-import Dropzone from "dropzone";
+import {Dropzone} from "dropzone";
 
 Dropzone.autoDiscover = false;
 
+if(document.getElementById("dropzone")){
 
-// Creo una nueva instancia de lo que estoy importando
+    // Creo una nueva instancia de lo que estoy importando
 // Pongo el id de la vista "create.blade" porque ahi uso dropzone
 const dropzone = new Dropzone('#dropzone', {
 
@@ -19,8 +20,8 @@ const dropzone = new Dropzone('#dropzone', {
 
     uploadMultiple: false,
 
-    // Esto se ejecuta una vez que se inicializa dropzone
-    init: function() {
+     // Esto se ejecuta una vez que se inicializa dropzone
+     init: function() {
 
         if(document.querySelector('[name="imagen"]').value.trim()){
 
@@ -70,3 +71,9 @@ dropzone.on('success', function(file, response){
 dropzone.on('removedfile', function(){
    document.querySelector('[name="imagen"]').value = "";
 })
+
+}
+
+
+
+   
