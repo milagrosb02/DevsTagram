@@ -62,8 +62,8 @@
                 {{-- informacion estatica del usuario--}}
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
 
-                    0
-                    <span>Seguidores</span>
+                    {{ $user->followers->count()}}
+                    <span>@choice('Seguidor|Seguidores', $user->followers->count())</span>
 
                 </p>
 
