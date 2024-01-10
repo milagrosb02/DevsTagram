@@ -20,4 +20,17 @@ class FollowerController extends Controller
         return back();
     }
 
+
+
+
+    public function destroy(User $user)
+    {
+        // crear seguidor
+        // uso metodo attach porque los campos que voy a relacionar esta en la misma tabla
+        // metodo attach (para relacion de muchos a muchos)
+        $user->followers()->detach(auth()->user()->id);
+
+        return back();
+    }
+
 }

@@ -89,44 +89,50 @@
 
                     {{-- condicional para no poder seguirte a vos mismo --}}
                     @if ($user->id !== auth()->user()->id )
+
+                        @if(!$user->siguiendo(auth()->user()))
                         
-                         {{-- BOTON PARA SEGUIR --}}
-                        <form action="{{ route('users.follow', $user) }}" method="POST">
+                            {{-- BOTON PARA SEGUIR --}}
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
 
-                            @csrf
+                                @csrf
 
-                            <input
-                            
-                                type="submit"
+                                <input
+                                
+                                    type="submit"
 
-                                class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
 
-                                value="Seguir"
-                            
-                            />
+                                    value="Seguir"
+                                
+                                />
 
 
-                        </form>   
+                            </form>   
+
+                        @else
 
 
                     {{-- BOTON PARA DEJAR DE SEGUIR  --}}
-                        <form action="" method="POST">
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
 
-                            @csrf
+                                @csrf
+                                @method('DELETE')
 
-                            <input
-                            
-                                type="submit"
+                                <input
+                                
+                                    type="submit"
 
-                                class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
 
-                                value="Dejar de seguir"
-                            
-                            />
+                                    value="Dejar de seguir"
+                                
+                                />
 
 
-                        </form>   
+                            </form>   
 
+                        @endif
 
                     @endif
                     
