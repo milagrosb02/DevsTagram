@@ -70,7 +70,7 @@
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
 
-                    0
+                    {{ $user->followers->count()}}
                     <span>Siguiendo</span>
 
                 </p>
