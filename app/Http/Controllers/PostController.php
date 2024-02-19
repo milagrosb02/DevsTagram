@@ -23,7 +23,7 @@ class PostController extends Controller
 
         // Filtro las publicaciones por el id del usuario
         // Con get se obtienen los resultados
-        $posts = Post::where('user_id', $user->id)->paginate(4);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(4);
 
 
         // retorna la vista del muro
