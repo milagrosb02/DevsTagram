@@ -6,7 +6,7 @@
 - Tailwind
 
 # Requisites #
-- PHP >= 7.4 (Para esta api utilice la 8.0.2)
+- PHP 8.0.2
 - Composer
 - MySQL
 - Laravel version 9.19
